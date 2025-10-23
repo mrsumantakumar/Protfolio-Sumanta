@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import awsIcon from "../assets/aws.jpg";
 import azureIcon from "../assets/asz.jpg";
-import dockerIcon from "../assets/doc.jpg";
+import dockerIcon from "../assets/docker.jpg";
 import ciIcon from "../assets/ci.jpg";
 import devopsIcon from "../assets/Devops1.jpeg";
 import Ansible from "../assets/Ansible.jpg";

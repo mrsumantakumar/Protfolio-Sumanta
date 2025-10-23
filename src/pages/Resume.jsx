@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FiDownload, FiExternalLink } from "react-icons/fi";
-import resumePDF from "../assets/Resume.pdf";
+
+// IMPORTANT: Use lowercase 'resume.pdf' to match your actual filename
+import resumePDF from "../assets/resume.pdf";
 
 const Resume = () => {
   const [isLoading, setIsLoading] = useState(true);

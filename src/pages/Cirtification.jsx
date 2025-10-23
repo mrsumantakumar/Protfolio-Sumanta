@@ -1,33 +1,17 @@
 import React from "react";
-import ibm from "../assets/ibm.jpg";
-import cir from "../assets/cir.jpg";
 
 const Cirtification = () => {
   const certificates = [
-    {
-      id: 1,
-      title: "IBM Cloud Computing Fundamentals",
-      issuer: "Issued by IBM",
-      image: ibm,
-      link: ibm, // Replace with actual link if available
-    },
-    {
-      id: 2,
-      title: "Introduction to DevOps",
-      issuer: "Issued by IBM",
-      image: cir,
-      link: cir, // Replace with actual link or PDF
-    },
+    { id: 1, title: "IBM Cloud Computing Fundamentals", issuer: "Issued by IBM", image: "/ibm.jpg", link: "/ibm.jpg" },
+    { id: 2, title: "Introduction to DevOps", issuer: "Issued by IBM", image: "/cir.jpg", link: "/cir.jpg" },
   ];
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center justify-center py-20 px-4">
-      {/* Section Title */}
       <h2 className="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-12 text-center">
         Certifications
       </h2>
 
-      {/* Certificates Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 w-full max-w-5xl">
         {certificates.map((cert) => (
           <div

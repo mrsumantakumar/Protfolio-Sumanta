@@ -1,37 +1,21 @@
 import { motion } from "framer-motion";
-import awsIcon from "../assets/aws.jpg";
-import azureIcon from "../assets/asz.jpg";
-import dockerIcon from "../assets/doc.jpg";
-import ciIcon from "../assets/ci.jpg";
-import devopsIcon from "../assets/Devops1.jpeg";
-import Ansible from "../assets/Ansible.jpg";
-import Argo from "../assets/Argo cd.jpg";
-import Azure from "../assets/Azure.jpg";
-import computernetworking from "../assets/computer networking.jpg";
-import git from "../assets/git.jpg";
-import github from "../assets/github.jpg";
-import jenkins from "../assets/jenkins.jpg";
-import kubanetes from "../assets/kubanetes.jpg";
-import linux from "../assets/Linux.jpg";
-import Terrform from "../assets/Terraform.jpg";
-import verson from "../assets/verson.webp";
 
 const skills = [
-  { name: "AWS", icon: awsIcon },
-  { name: "Azure", icon: azureIcon },
-  { name: "Docker", icon: dockerIcon },
-  { name: "CI/CD", icon: ciIcon },
-  { name: "DevOps", icon: devopsIcon },
-  { name: "Ansible", icon: Ansible },
-  { name: "ArgoCD", icon: Argo },
-  { name: "Git", icon: git },
-  { name: "GitHub", icon: github },
-  { name: "Jenkins", icon: jenkins },
-  { name: "Kubernetes", icon: kubanetes },
-  { name: "Linux", icon: linux },
-  { name: "Terraform", icon: Terrform },
-  { name: "Networking", icon: computernetworking },
-  { name: "Version Control", icon: verson },
+  { name: "AWS", icon: "/aws.jpg" },
+  { name: "Azure", icon: "/asz.jpg" },
+  { name: "Docker", icon: "/doc.jpg" },
+  { name: "CI/CD", icon: "/ci.jpg" },
+  { name: "DevOps", icon: "/Devops1.jpeg" },
+  { name: "Ansible", icon: "/Ansible.jpg" },
+  { name: "ArgoCD", icon: "/Argo cd.jpg" },
+  { name: "Git", icon: "/git.jpg" },
+  { name: "GitHub", icon: "/github.jpg" },
+  { name: "Jenkins", icon: "/jenkins.jpg" },
+  { name: "Kubernetes", icon: "/kubanetes.jpg" },
+  { name: "Linux", icon: "/Linux.jpg" },
+  { name: "Terraform", icon: "/Terraform.jpg" },
+  { name: "Networking", icon: "/computer networking.jpg" },
+  { name: "Version Control", icon: "/verson.webp" },
 ];
 
 export default function Skills() {
@@ -67,7 +51,3 @@ export default function Skills() {
     </motion.div>
   );
 }
-
-
-
-

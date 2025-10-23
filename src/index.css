@@ -1,0 +1,10 @@
+
+@import "tailwindcss";
+
+
+/* Add this in your global CSS */
+.glow-border {
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.6);
+}
+
+

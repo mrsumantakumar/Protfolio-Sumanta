@@ -47,9 +47,7 @@ export default function Home() {
       initial="hidden"
       animate="visible"
     >
-      {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Floating particles */}
         {[...Array(15)].map((_, i) => (
           <motion.div
             key={i}
@@ -70,7 +68,6 @@ export default function Home() {
           />
         ))}
         
-        {/* DevOps Background Pattern */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <motion.img
             src={dev}
@@ -82,7 +79,6 @@ export default function Home() {
           />
         </div>
 
-        {/* Gradient Orbs */}
         <motion.div
           className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-3xl opacity-10 dark:opacity-5"
           animate={{
@@ -110,9 +106,7 @@ export default function Home() {
         />
       </div>
 
-      {/* Main Content */}
       <div className="relative z-10 w-full max-w-4xl mx-auto text-center">
-        {/* Header Section */}
         <motion.div
           className="mb-8"
           variants={itemVariants}
@@ -141,12 +135,10 @@ export default function Home() {
           </motion.div>
         </motion.div>
 
-        {/* Profile Section */}
         <motion.div
           className="flex flex-col lg:flex-row items-center justify-between gap-8 mb-12"
           variants={containerVariants}
         >
-          {/* Profile Image */}
           <motion.div
             className="flex-shrink-0"
             initial={{ scale: 0, rotate: -180 }}
@@ -176,7 +168,6 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          {/* Bio and Skills */}
           <motion.div
             className="flex-1 text-left space-y-6"
             variants={containerVariants}
@@ -192,7 +183,6 @@ export default function Home() {
               </p>
             </motion.div>
 
-            {/* Skills Cloud */}
             <motion.div variants={itemVariants}>
               <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">
                 Core Technologies
@@ -224,7 +214,6 @@ export default function Home() {
           </motion.div>
         </motion.div>
 
-        {/* CTA Buttons */}
         <motion.div
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
           variants={itemVariants}
@@ -271,7 +260,6 @@ export default function Home() {
           </motion.div>
         </motion.div>
 
-        {/* Social Links */}
         <motion.div
           className="mb-8"
           variants={itemVariants}
@@ -279,7 +267,6 @@ export default function Home() {
           <SocialLinks />
         </motion.div>
 
-        {/* Scroll Indicator */}
         <motion.div
           className="flex flex-col items-center space-y-2"
           initial={{ opacity: 0 }}

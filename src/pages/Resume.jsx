@@ -1,8 +1,9 @@
 import React from "react";
-import resume from "../assets/Resume.pdf";
 import { FiDownload } from "react-icons/fi";
 
 const Resume = () => {
+  const resumeURL = "/Resume.pdf"; // public folder path
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-100 to-purple-100 p-4">
       <div className="bg-white shadow-xl rounded-2xl p-6 sm:p-8 max-w-md w-full text-center">
@@ -13,7 +14,7 @@ const Resume = () => {
           Click the button below to download or view my resume as a PDF.
         </p>
         <a
-          href={resumePDF}
+          href={resumeURL}
           download
           className="inline-flex items-center justify-center px-5 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700 transition-colors duration-300 text-sm sm:text-base"
         >
@@ -22,11 +23,11 @@ const Resume = () => {
         </a>
         <div className="mt-5 sm:mt-6">
           <iframe
-            src={resumePDF}
+            src={resumeURL}
             width="100%"
-            height="300px" // smaller for mobile
+            height="300px"
             title="Resume"
-            className="rounded-lg border sm:h-[400px]" // bigger on larger screens
+            className="rounded-lg border sm:h-[400px]"
           />
         </div>
       </div>
@@ -35,5 +36,3 @@ const Resume = () => {
 };
 
 export default Resume;
-
-

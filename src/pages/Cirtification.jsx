@@ -1,48 +1,6 @@
-// import React from "react";
-// import IBM from "../assets/ibm.jpg"; 
-// import cir from '../assets/cir.jpg'
-
-// const Cirtification = () => {
-//   return (
-//     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center justify-center py-20 px-4">
-//       {/* Section Title */}
-//       <h2 className="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-12 text-center">
-//         Certification
-//       </h2>
-
-//       {/* Certificate Card */}
-//       <div className="bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-6 flex flex-col items-center text-center max-w-sm w-full hover:scale-105 transform transition-transform duration-300">
-//         <img
-//           src={IBM}
-//           alt="IBM Certification"
-//           className="w-64 h-64 sm:w-72 sm:h-72 object-contain mb-6 rounded-lg"
-//         />
-//         <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
-//           IBM Cloud Fundamentals
-//         </h3>
-//         <p className="text-gray-600 dark:text-gray-300 mt-2">
-//           Issued by IBM
-//         </p>
-//         <a
-//           href={IBM} // You can replace with a PDF link if available
-//           download
-//           className="mt-4 px-6 py-2 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 transition"
-//         >
-//           Download Certificate
-//         </a>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Cirtification;
-
-
-
-
 import React from "react";
-import IBM from "../assets/ibm.jpg";
-import CIR from "../assets/cir.jpg";
+import ibm from "../assets/ibm.jpg";
+import cir from "../assets/cir.jpg";
 
 const Cirtification = () => {
   const certificates = [
@@ -50,15 +8,15 @@ const Cirtification = () => {
       id: 1,
       title: "IBM Cloud Computing Fundamentals",
       issuer: "Issued by IBM",
-      image: IBM,
-      link: IBM, // Replace with actual link if available
+      image: ibm,
+      link: ibm, // Replace with actual link if available
     },
     {
       id: 2,
       title: "Introduction to DevOps",
       issuer: "Issued by IBM",
-      image: CIR,
-      link: CIR, // Replace with actual link or PDF
+      image: cir,
+      link: cir, // Replace with actual link or PDF
     },
   ];
 

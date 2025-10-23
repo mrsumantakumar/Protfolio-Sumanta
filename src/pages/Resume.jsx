@@ -1,5 +1,5 @@
 import React from "react";
-import resumePDF from "../assets/Resume.pdf";
+import resume from "../assets/Resume.pdf";
 import { FiDownload } from "react-icons/fi";
 
 const Resume = () => {

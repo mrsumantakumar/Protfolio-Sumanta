@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageCircle, User } from "lucide-react";
 
 export default function Contact() {
   const [result, setResult] = useState("");
@@ -34,121 +34,223 @@ export default function Contact() {
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const cardHover = {
+    hover: {
+      y: -5,
+      scale: 1.02,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
     <motion.section 
-      className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 px-6 md:px-20 py-16"
+      className="min-h-screen py-16 bg-gradient-to-br from-slate-900 via-purple-900 to-blue-900"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+      {/* Animated Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px]" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ x: -50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
+          className="text-center mb-16"
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-6">
-            Get in Touch 💬
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-            Feel free to reach out via this contact form or use the details
-            below. Your feedback, questions, and suggestions mean a lot!
-          </p>
-
-          <ul className="space-y-4 text-gray-700 dark:text-gray-300">
-            <motion.li 
-              className="flex items-center gap-3 p-3 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-colors"
-              whileHover={{ x: 10 }}
-            >
-              <Mail className="text-indigo-500" />
-              <span>sumantakumarnayak199@gmail.com</span>
-            </motion.li>
-            <motion.li 
-              className="flex items-center gap-3 p-3 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-colors"
-              whileHover={{ x: 10 }}
-            >
-              <Phone className="text-indigo-500" />
-              <span>+91-7735930235</span>
-            </motion.li>
-            <motion.li 
-              className="flex items-center gap-3 p-3 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-colors"
-              whileHover={{ x: 10 }}
-            >
-              <MapPin className="text-indigo-500" />
-              <span>Dhenkanal, Odisha</span>
-            </motion.li>
-          </ul>
-        </motion.div>
-
-        <motion.div
-          initial={{ x: 50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          className="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-8 border border-gray-100 dark:border-gray-700"
-        >
-          <form onSubmit={onSubmit} className="space-y-5">
-            <motion.div whileHover={{ scale: 1.02 }}>
-              <label className="block font-medium mb-1">Your Name</label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Enter your name"
-                required
-                className="w-full rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none dark:bg-gray-900 transition-all"
-              />
-            </motion.div>
-
-            <motion.div whileHover={{ scale: 1.02 }}>
-              <label className="block font-medium mb-1">Email Address</label>
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                required
-                className="w-full rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none dark:bg-gray-900 transition-all"
-              />
-            </motion.div>
-
-            <motion.div whileHover={{ scale: 1.02 }}>
-              <label className="block font-medium mb-1">Phone Number</label>
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Enter your phone number"
-                required
-                className="w-full rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none dark:bg-gray-900 transition-all"
-              />
-            </motion.div>
-
-            <motion.div whileHover={{ scale: 1.02 }}>
-              <label className="block font-medium mb-1">Message</label>
-              <textarea
-                name="message"
-                rows="5"
-                placeholder="Write your message..."
-                required
-                className="w-full rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none dark:bg-gray-900 transition-all resize-vertical"
-              ></textarea>
-            </motion.div>
-
-            <motion.button
-              type="submit"
-              disabled={isSubmitting}
-              className="flex items-center gap-2 justify-center w-full bg-indigo-600 text-white px-5 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Send size={20} />
-              {isSubmitting ? "Sending..." : "Submit Now"}
-            </motion.button>
-          </form>
-
+          <motion.div
+            className="inline-flex items-center gap-3 mb-4"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.2, type: "spring" }}
+          >
+            <MessageCircle className="w-8 h-8 text-blue-400" />
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Get in Touch
+              </span>
+            </h2>
+            <User className="w-8 h-8 text-purple-400" />
+          </motion.div>
           <motion.p 
-            className="mt-4 text-sm text-center text-gray-500 dark:text-gray-400"
+            className="text-xl text-slate-400 max-w-3xl mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
           >
-            {result}
+            Let's discuss how I can contribute to your DevOps team and grow together
           </motion.p>
         </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          {/* Contact Information */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="space-y-8"
+          >
+            <motion.div variants={itemVariants}>
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Let's Connect & Build Together
+              </h3>
+              <p className="text-lg text-slate-400 leading-relaxed">
+                I'm excited to discuss DevOps opportunities and how my skills in automation, 
+                cloud infrastructure, and CI/CD can benefit your organization.
+              </p>
+            </motion.div>
+
+            <div className="space-y-6">
+              <motion.div 
+                className="flex items-center gap-4 p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-slate-600/50 hover:border-blue-500/50 transition-all duration-300"
+                variants={{...itemVariants, ...cardHover}}
+                whileHover="hover"
+              >
+                <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-blue-400" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-white">Email</h3>
+                  <a href="mailto:sumantakumarnayak199@gmail.com" className="text-slate-400 hover:text-blue-400 transition-colors">
+                    sumantakumarnayak199@gmail.com
+                  </a>
+                </div>
+              </motion.div>
+
+              <motion.div 
+                className="flex items-center gap-4 p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-slate-600/50 hover:border-purple-500/50 transition-all duration-300"
+                variants={{...itemVariants, ...cardHover}}
+                whileHover="hover"
+              >
+                <div className="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                  <Phone className="w-6 h-6 text-purple-400" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-white">Phone</h3>
+                  <a href="tel:+917735930235" className="text-slate-400 hover:text-purple-400 transition-colors">
+                    +91 77359 30235
+                  </a>
+                </div>
+              </motion.div>
+
+              <motion.div 
+                className="flex items-center gap-4 p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-slate-600/50 hover:border-blue-500/50 transition-all duration-300"
+                variants={{...itemVariants, ...cardHover}}
+                whileHover="hover"
+              >
+                <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-blue-400" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-white">Location</h3>
+                  <p className="text-slate-400">Dhenkanal, Odisha, India</p>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Contact Form */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-slate-600/50"
+          >
+            <form onSubmit={onSubmit} className="space-y-6">
+              <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }}>
+                <label className="block font-semibold text-white mb-2">Your Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Enter your name"
+                  required
+                  className="w-full rounded-xl border border-slate-600/50 px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none bg-white/5 text-white placeholder-slate-400 transition-all duration-300"
+                />
+              </motion.div>
+
+              <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }}>
+                <label className="block font-semibold text-white mb-2">Email Address</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  required
+                  className="w-full rounded-xl border border-slate-600/50 px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none bg-white/5 text-white placeholder-slate-400 transition-all duration-300"
+                />
+              </motion.div>
+
+              <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }}>
+                <label className="block font-semibold text-white mb-2">Phone Number</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Enter your phone number"
+                  required
+                  className="w-full rounded-xl border border-slate-600/50 px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none bg-white/5 text-white placeholder-slate-400 transition-all duration-300"
+                />
+              </motion.div>
+
+              <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }}>
+                <label className="block font-semibold text-white mb-2">Message</label>
+                <textarea
+                  name="message"
+                  rows="5"
+                  placeholder="Tell me about your DevOps opportunities or project requirements..."
+                  required
+                  className="w-full rounded-xl border border-slate-600/50 px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none bg-white/5 text-white placeholder-slate-400 transition-all duration-300 resize-vertical"
+                ></textarea>
+              </motion.div>
+
+              <motion.button
+                type="submit"
+                disabled={isSubmitting}
+                className="flex items-center gap-2 justify-center w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-4 rounded-xl font-semibold hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                variants={itemVariants}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Send size={20} />
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </motion.button>
+            </form>
+
+            <motion.p 
+              className="mt-4 text-center text-slate-400 font-medium"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              {result}
+            </motion.p>
+          </motion.div>
+        </div>
       </div>
     </motion.section>
   );

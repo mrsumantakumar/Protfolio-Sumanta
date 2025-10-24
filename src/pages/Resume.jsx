@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FiDownload, FiExternalLink } from "react-icons/fi";
+import { Download, ExternalLink } from "lucide-react"; // Changed from react-icons to lucide-react
 
 // IMPORTANT: Use lowercase 'resume.pdf' to match your actual filename
 import resumePDF from "../assets/resume.pdf";
@@ -15,10 +15,10 @@ const Resume = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-100 to-purple-100 dark:from-gray-900 dark:to-gray-800">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600 dark:text-gray-300">Loading resume...</p>
+          <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-slate-400 font-medium">Loading resume...</p>
         </div>
       </div>
     );
@@ -26,33 +26,33 @@ const Resume = () => {
 
   return (
     <motion.div 
-      className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-100 to-purple-100 dark:from-gray-900 dark:to-gray-800 p-4"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 p-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
       <motion.div 
-        className="bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-6 sm:p-8 max-w-md w-full text-center"
+        className="bg-white/10 backdrop-blur-sm shadow-xl rounded-2xl p-8 max-w-md w-full text-center border border-slate-600/50"
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: "spring", stiffness: 300 }}
       >
-        <h1 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-gray-800 dark:text-white">
+        <h1 className="text-3xl font-bold mb-4 text-white">
           My Resume
         </h1>
-        <p className="text-gray-600 dark:text-gray-300 mb-5 sm:mb-6 text-sm sm:text-base">
+        <p className="text-slate-400 mb-6">
           Click the button below to download or view my resume as a PDF.
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <motion.a
             href={resumePDF}
             download="Sumanta_Resume.pdf"
-            className="flex items-center justify-center px-5 py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow hover:bg-indigo-700 transition-colors duration-300 text-sm sm:text-base"
+            className="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <FiDownload className="mr-2 text-lg sm:text-xl" />
+            <Download className="mr-2 w-5 h-5" />
             Download PDF
           </motion.a>
           
@@ -60,17 +60,17 @@ const Resume = () => {
             href={resumePDF}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center px-5 py-3 bg-gray-600 text-white font-semibold rounded-lg shadow hover:bg-gray-700 transition-colors duration-300 text-sm sm:text-base"
+            className="flex items-center justify-center px-6 py-3 bg-slate-600/50 text-slate-300 font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <FiExternalLink className="mr-2 text-lg sm:text-xl" />
+            <ExternalLink className="mr-2 w-5 h-5" />
             Open
           </motion.a>
         </div>
         
         <motion.div 
-          className="mt-5 sm:mt-6"
+          className="mt-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
@@ -78,15 +78,15 @@ const Resume = () => {
           <iframe
             src={resumePDF}
             width="100%"
-            height="300px"
+            height="400px"
             title="Resume PDF Viewer"
-            className="rounded-lg border-2 border-gray-200 dark:border-gray-700 sm:h-[400px]"
+            className="rounded-xl border-2 border-slate-600/50"
             onLoad={() => setIsLoading(false)}
           />
         </motion.div>
         
         <motion.p 
-          className="mt-4 text-sm text-gray-500 dark:text-gray-400"
+          className="mt-4 text-sm text-slate-500"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import awsIcon from "../assets/aws.jpg";
-import azureIcon from "../assets/Azure.jpg";
+import azureIcon from "../assets/asz.jpg";
 import dockerIcon from "../assets/doc.jpg";
 import ciIcon from "../assets/ci.jpg";
 import devopsIcon from "../assets/devops1.jpeg";
@@ -14,6 +14,7 @@ import linux from "../assets/Linux.jpg";
 import Terrform from "../assets/Terraform.jpg";
 import computernetworking from "../assets/computer-networking.jpg";
 import verson from "../assets/verson.webp";
+import { Cpu, Zap, Cloud, Server } from "lucide-react";
 
 const skills = [
   { name: "AWS", icon: awsIcon, category: "Cloud", level: 90 },
@@ -35,6 +36,21 @@ const skills = [
 
 const categories = [...new Set(skills.map(skill => skill.category))];
 
+const categoryIcons = {
+  "Cloud": <Cloud className="w-6 h-6" />,
+  "Containerization": <Server className="w-6 h-6" />,
+  "Automation": <Zap className="w-6 h-6" />,
+  "Methodology": <Cpu className="w-6 h-6" />,
+  "GitOps": <Cloud className="w-6 h-6" />,
+  "Version Control": <Zap className="w-6 h-6" />,
+  "CI/CD": <Server className="w-6 h-6" />,
+  "Orchestration": <Cpu className="w-6 h-6" />,
+  "Operating System": <Server className="w-6 h-6" />,
+  "IaC": <Cloud className="w-6 h-6" />,
+  "Infrastructure": <Server className="w-6 h-6" />,
+  "Development": <Zap className="w-6 h-6" />
+};
+
 export default function Skills() {
   const container = {
     hidden: { opacity: 0 },
@@ -47,13 +63,39 @@ export default function Skills() {
   };
 
   const item = {
-    hidden: { scale: 0, opacity: 0 },
+    hidden: { scale: 0, opacity: 0, y: 20 },
     show: { 
       scale: 1, 
       opacity: 1,
+      y: 0,
       transition: {
         type: "spring",
-        stiffness: 100
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  };
+
+  const progressAnimation = {
+    hidden: { width: 0 },
+    show: (custom) => ({
+      width: `${custom}%`,
+      transition: {
+        duration: 1.5,
+        ease: "easeOut",
+        delay: 0.5
+      }
+    })
+  };
+
+  const cardHover = {
+    hover: {
+      y: -8,
+      scale: 1.05,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 10
       }
     }
   };
@@ -63,9 +105,14 @@ export default function Skills() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen py-16 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800"
+      className="min-h-screen py-16 bg-gradient-to-br from-slate-900 via-blue-900 to-emerald-900"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Animated Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px]" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           className="text-center mb-16"
@@ -73,12 +120,28 @@ export default function Skills() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-4">
-            Skills & Technologies
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <motion.div
+            className="inline-flex items-center gap-3 mb-4"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.2, type: "spring" }}
+          >
+            <Cpu className="w-8 h-8 text-blue-400" />
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
+              <span className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+                Skills & Technologies
+              </span>
+            </h2>
+            <Zap className="w-8 h-8 text-emerald-400" />
+          </motion.div>
+          <motion.p 
+            className="text-xl text-slate-400 max-w-3xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
             Mastering the tools and technologies that power modern DevOps and cloud infrastructure
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Skills Grid */}
@@ -90,9 +153,13 @@ export default function Skills() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: categoryIndex * 0.2 + 0.3 }}
           >
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-8 text-center border-b-2 border-indigo-200 dark:border-indigo-800 pb-2">
+            <motion.h3 
+              className="text-2xl font-bold text-white mb-8 text-center border-b-2 border-blue-200/30 dark:border-blue-800/30 pb-2 flex items-center justify-center gap-3"
+              whileHover={{ scale: 1.02 }}
+            >
+              {categoryIcons[category]}
               {category}
-            </h3>
+            </motion.h3>
             <motion.div 
               className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"
               variants={container}
@@ -104,15 +171,14 @@ export default function Skills() {
                 .map((skill, index) => (
                   <motion.div
                     key={skill.name}
-                    variants={item}
-                    whileHover={{ 
-                      scale: 1.05,
-                      y: -5,
-                      transition: { type: "spring", stiffness: 300 }
+                    variants={{
+                      ...item,
+                      hover: cardHover.hover
                     }}
+                    whileHover="hover"
                     className="relative group"
                   >
-                    <div className="flex flex-col items-center p-6 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl border border-gray-200 dark:border-gray-700 transition-all duration-300">
+                    <div className="flex flex-col items-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl border border-slate-600/50 transition-all duration-300">
                       {/* Skill Icon */}
                       <motion.div
                         className="relative mb-4"
@@ -123,33 +189,35 @@ export default function Skills() {
                           src={skill.icon}
                           alt={skill.name}
                           className="w-16 h-16 object-contain rounded-lg"
+                          loading="lazy"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-emerald-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </motion.div>
 
                       {/* Skill Name */}
-                      <h4 className="font-semibold text-gray-800 dark:text-gray-200 text-center mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                      <h4 className="font-semibold text-white text-center mb-2 group-hover:text-blue-400 transition-colors">
                         {skill.name}
                       </h4>
 
                       {/* Progress Bar */}
-                      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                      <div className="w-full bg-slate-700/50 rounded-full h-2">
                         <motion.div
-                          className="bg-gradient-to-r from-indigo-500 to-purple-500 h-2 rounded-full"
-                          initial={{ width: 0 }}
-                          animate={{ width: `${skill.level}%` }}
-                          transition={{ delay: index * 0.1 + 0.5, duration: 1, ease: "easeOut" }}
+                          className="bg-gradient-to-r from-blue-500 to-emerald-500 h-2 rounded-full"
+                          variants={progressAnimation}
+                          custom={skill.level}
+                          initial="hidden"
+                          animate="show"
                         />
                       </div>
 
                       {/* Level Indicator */}
-                      <span className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                      <span className="text-xs text-slate-400 mt-2">
                         {skill.level}%
                       </span>
                     </div>
 
                     {/* Glow Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300 -z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300 -z-10" />
                   </motion.div>
                 ))}
             </motion.div>
@@ -158,22 +226,28 @@ export default function Skills() {
 
         {/* Call to Action */}
         <motion.div 
-          className="text-center mt-16 p-8 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700"
+          className="text-center mt-16 p-8 bg-white/10 backdrop-blur-sm rounded-2xl border border-slate-600/50"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
         >
-          <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+          <motion.h3 
+            className="text-2xl font-bold text-white mb-4"
+            whileHover={{ scale: 1.02 }}
+          >
             Always Learning, Always Growing
-          </h3>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-6">
+          </motion.h3>
+          <motion.p 
+            className="text-slate-400 max-w-2xl mx-auto mb-6"
+            whileHover={{ color: "#cbd5e1" }}
+          >
             The DevOps landscape is constantly evolving, and I'm committed to staying at the forefront 
             of new technologies and methodologies to deliver cutting-edge solutions.
-          </p>
+          </motion.p>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            className="px-8 py-3 bg-gradient-to-r from-blue-600 to-emerald-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
           >
             Explore My Projects
           </motion.button>

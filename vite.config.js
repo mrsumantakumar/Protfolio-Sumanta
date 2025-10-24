@@ -6,12 +6,14 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
-    chunkSizeWarningLimit: 1600,
+    minify: 'esbuild',
+    chunkSizeWarningLimit: 600,
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
-          animation: ['framer-motion']
+          animation: ['framer-motion'],
+          icons: ['lucide-react']
         }
       }
     }
@@ -20,6 +22,5 @@ export default defineConfig({
     port: 3000,
   },
   base: './',
-  // Add this to handle asset imports properly
-  assetsInclude: ['**/*.jpg', '**/*.jpeg', '**/*.png', '**/*.svg', '**/*.webp', '**/*.pdf'],
+  assetsInclude: ['**/*.jpg', '**/*.jpeg', '**/*.png', '**/*.svg', '**/*.webp', '**/*.pdf']
 })

@@ -7,9 +7,9 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Skills from "./pages/Skills";
 import Contact from "./pages/Contact";
-import { AnimatePresence } from "framer-motion";
 import Resume from "./pages/Resume";
 import Cirtification from "./pages/Cirtification";
+import { AnimatePresence } from "framer-motion";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -32,7 +32,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <Router>
-        <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+        <div className="min-h-screen flex flex-col bg-slate-900 text-slate-100 transition-colors duration-300">
           <Navbar />
           <main className="flex-grow">
             <AnimatedRoutes />
